@@ -1,26 +1,314 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Warm Gradient Core */
+  --aura-orange: #E07B4A;
+  --aura-peach: #EE9A6D;
+  --aura-blush: #F4B89A;
+  --aura-cream: #FFF5EE;
+
+  /* Neutrals */
+  --aura-charcoal: #2D2A26;
+  --aura-warm-gray: #8A8078;
+  --aura-light-gray: #F5F0EC;
+  --aura-white: #FFFDFB;
+
+  /* Motion */
+  --ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+  --ease-breathe: cubic-bezier(0.37, 0, 0.63, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 800ms;
+  --duration-ambient: 3000ms;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-aura-orange: var(--aura-orange);
+  --color-aura-peach: var(--aura-peach);
+  --color-aura-blush: var(--aura-blush);
+  --color-aura-cream: var(--aura-cream);
+  --color-aura-charcoal: var(--aura-charcoal);
+  --color-aura-warm-gray: var(--aura-warm-gray);
+  --color-aura-light-gray: var(--aura-light-gray);
+  --color-aura-white: var(--aura-white);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-jakarta);
+  --font-accent: var(--font-cormorant);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--aura-white);
+  color: var(--aura-charcoal);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--aura-blush);
+  color: var(--aura-charcoal);
+}
+
+/* ——— Section Flow — smooth inter-section color transitions ———
+   Adjust --section-fade to control how gradually sections blend.
+   Used on colored sections to eliminate hard background cuts. */
+
+:root {
+  --section-fade: 4rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-fade: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-fade: 8rem;
+  }
+}
+
+/* Replaces bg-aura-cream — fades in/out instead of hard edges */
+.aura-flow-cream {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--aura-cream) var(--section-fade),
+    var(--aura-cream) calc(100% - var(--section-fade)),
+    transparent
+  );
+}
+
+/* Replaces bg-aura-light-gray — fades in/out instead of hard edges */
+.aura-flow-light-gray {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--aura-light-gray) var(--section-fade),
+    var(--aura-light-gray) calc(100% - var(--section-fade)),
+    transparent
+  );
+}
+
+/* Apply to gradient overlay divs — fades both edges */
+.aura-flow-mask {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black var(--section-fade), black calc(100% - var(--section-fade)), transparent);
+  mask-image: linear-gradient(to bottom, transparent, black var(--section-fade), black calc(100% - var(--section-fade)), transparent);
+}
+
+/* Fades only the bottom edge (e.g. hero sections) */
+.aura-flow-mask-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - var(--section-fade)), transparent);
+  mask-image: linear-gradient(to bottom, black calc(100% - var(--section-fade)), transparent);
+}
+
+/* ——— Ambient orb animations ———
+   Each section gets drifting radial-gradient blobs via ::before / ::after.
+   Uses translate on GPU-composited pseudo-elements for smooth 60fps.
+   Orbs are large, soft, and move slowly to feel like breathing light. */
+
+/* Shared base for ambient orbs */
+.aura-orb {
+  position: relative;
+  overflow: hidden;
+}
+
+.aura-orb::before,
+.aura-orb::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  filter: blur(60px);
+}
+
+/* ——— Drift keyframes ——— */
+
+@keyframes drift-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  25%      { transform: translate(6%, -8%) scale(1.05); }
+  50%      { transform: translate(-4%, 5%) scale(0.97); }
+  75%      { transform: translate(3%, 8%) scale(1.03); }
+}
+
+@keyframes drift-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  30%      { transform: translate(-7%, 6%) scale(1.04); }
+  60%      { transform: translate(5%, -5%) scale(0.96); }
+  80%      { transform: translate(-3%, -7%) scale(1.02); }
+}
+
+@keyframes drift-3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  20%      { transform: translate(5%, 7%) scale(1.06); }
+  45%      { transform: translate(-6%, -3%) scale(0.95); }
+  70%      { transform: translate(4%, -6%) scale(1.02); }
+}
+
+/* ——— Hero section — warm, prominent orbs ——— */
+.aura-orb-hero::before {
+  width: 60vw; height: 60vw;
+  top: -15%; left: -10%;
+  background: radial-gradient(circle, rgba(238,154,109,0.35) 0%, transparent 70%);
+  animation: drift-1 14s var(--ease-breathe) infinite;
+}
+.aura-orb-hero::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: radial-gradient(circle, rgba(244,184,154,0.3) 0%, transparent 70%);
+  animation: drift-2 18s var(--ease-breathe) infinite;
+}
+
+/* ——— Discover — very subtle warm wash on white bg ——— */
+.aura-orb-discover::before {
+  width: 50vw; height: 50vw;
+  top: -10%; right: -15%;
+  background: radial-gradient(circle, rgba(238,154,109,0.08) 0%, transparent 70%);
+  animation: drift-2 16s var(--ease-breathe) infinite;
+}
+.aura-orb-discover::after {
+  width: 40vw; height: 40vw;
+  bottom: 0%; left: -10%;
+  background: radial-gradient(circle, rgba(244,184,154,0.06) 0%, transparent 70%);
+  animation: drift-3 20s var(--ease-breathe) infinite;
+}
+
+/* ——— Offerings — soft peach on cream bg ——— */
+.aura-orb-offerings::before {
+  width: 45vw; height: 45vw;
+  top: -5%; left: -10%;
+  background: radial-gradient(circle, rgba(224,123,74,0.07) 0%, transparent 70%);
+  animation: drift-3 17s var(--ease-breathe) infinite;
+}
+.aura-orb-offerings::after {
+  width: 50vw; height: 50vw;
+  bottom: -10%; right: -15%;
+  background: radial-gradient(circle, rgba(238,154,109,0.06) 0%, transparent 70%);
+  animation: drift-1 21s var(--ease-breathe) infinite;
+}
+
+/* ——— For You — warmer since it has a gradient overlay ——— */
+.aura-orb-forYou::before {
+  width: 55vw; height: 55vw;
+  top: -20%; left: -15%;
+  background: radial-gradient(circle, rgba(224,123,74,0.12) 0%, transparent 70%);
+  animation: drift-1 15s var(--ease-breathe) infinite;
+}
+.aura-orb-forYou::after {
+  width: 45vw; height: 45vw;
+  bottom: -15%; right: -10%;
+  background: radial-gradient(circle, rgba(244,184,154,0.1) 0%, transparent 70%);
+  animation: drift-3 19s var(--ease-breathe) infinite;
+}
+
+/* ——— Location — subtle on light-gray bg ——— */
+.aura-orb-location::before {
+  width: 40vw; height: 40vw;
+  top: -10%; left: 10%;
+  background: radial-gradient(circle, rgba(238,154,109,0.06) 0%, transparent 70%);
+  animation: drift-2 18s var(--ease-breathe) infinite;
+}
+.aura-orb-location::after {
+  width: 45vw; height: 45vw;
+  bottom: -5%; right: -10%;
+  background: radial-gradient(circle, rgba(224,123,74,0.05) 0%, transparent 70%);
+  animation: drift-1 22s var(--ease-breathe) infinite;
+}
+
+/* ——— Waitlist — warm drift on gradient bg ——— */
+.aura-orb-waitlist::before {
+  width: 50vw; height: 50vw;
+  top: -15%; right: -10%;
+  background: radial-gradient(circle, rgba(224,123,74,0.14) 0%, transparent 70%);
+  animation: drift-3 16s var(--ease-breathe) infinite;
+}
+.aura-orb-waitlist::after {
+  width: 40vw; height: 40vw;
+  bottom: -10%; left: -5%;
+  background: radial-gradient(circle, rgba(244,184,154,0.1) 0%, transparent 70%);
+  animation: drift-1 20s var(--ease-breathe) infinite;
+}
+
+/* ——— Subpage hero — gentle orbs on muted gradient ——— */
+.aura-orb-subhero::before {
+  width: 45vw; height: 45vw;
+  top: -15%; right: -10%;
+  background: radial-gradient(circle, rgba(238,154,109,0.12) 0%, transparent 70%);
+  animation: drift-1 16s var(--ease-breathe) infinite;
+}
+.aura-orb-subhero::after {
+  width: 40vw; height: 40vw;
+  bottom: -10%; left: -10%;
+  background: radial-gradient(circle, rgba(244,184,154,0.08) 0%, transparent 70%);
+  animation: drift-2 20s var(--ease-breathe) infinite;
+}
+
+/* ——— Philosophy "Ich habe genug" — contemplative, slow ——— */
+.aura-orb-philosophy::before {
+  width: 50vw; height: 50vw;
+  top: -20%; left: -10%;
+  background: radial-gradient(circle, rgba(244,184,154,0.1) 0%, transparent 70%);
+  animation: drift-2 20s var(--ease-breathe) infinite;
+}
+.aura-orb-philosophy::after {
+  width: 40vw; height: 40vw;
+  bottom: -15%; right: -5%;
+  background: radial-gradient(circle, rgba(238,154,109,0.08) 0%, transparent 70%);
+  animation: drift-3 24s var(--ease-breathe) infinite;
+}
+
+/* ——— Generic content section — very faint on white bg ——— */
+.aura-orb-content::before {
+  width: 40vw; height: 40vw;
+  top: -5%; right: -10%;
+  background: radial-gradient(circle, rgba(238,154,109,0.05) 0%, transparent 70%);
+  animation: drift-1 19s var(--ease-breathe) infinite;
+}
+.aura-orb-content::after {
+  width: 35vw; height: 35vw;
+  bottom: -5%; left: -5%;
+  background: radial-gradient(circle, rgba(244,184,154,0.04) 0%, transparent 70%);
+  animation: drift-2 23s var(--ease-breathe) infinite;
+}
+
+/* ——— Cream section variant ——— */
+.aura-orb-cream::before {
+  width: 45vw; height: 45vw;
+  top: -10%; left: -10%;
+  background: radial-gradient(circle, rgba(224,123,74,0.06) 0%, transparent 70%);
+  animation: drift-3 17s var(--ease-breathe) infinite;
+}
+.aura-orb-cream::after {
+  width: 40vw; height: 40vw;
+  bottom: -10%; right: -10%;
+  background: radial-gradient(circle, rgba(238,154,109,0.05) 0%, transparent 70%);
+  animation: drift-1 21s var(--ease-breathe) infinite;
+}
+
+/* ——— Light-gray section variant ——— */
+.aura-orb-gray::before {
+  width: 40vw; height: 40vw;
+  top: -10%; left: 5%;
+  background: radial-gradient(circle, rgba(238,154,109,0.05) 0%, transparent 70%);
+  animation: drift-2 18s var(--ease-breathe) infinite;
+}
+.aura-orb-gray::after {
+  width: 35vw; height: 35vw;
+  bottom: -5%; right: -5%;
+  background: radial-gradient(circle, rgba(224,123,74,0.04) 0%, transparent 70%);
+  animation: drift-3 22s var(--ease-breathe) infinite;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .aura-orb::before,
+  .aura-orb::after {
+    animation: none !important;
+  }
 }

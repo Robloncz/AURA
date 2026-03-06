@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "title": "AURA - A Space to Remember",
+    "description": "A space for yoga, sauna rituals, meditation, clarity sessions, and community in Cologne."
+  },
+  "nav": {
+    "studio": "Studio",
+    "clarity": "Clarity",
+    "philosophy": "Philosophy",
+    "about": "About",
+    "book": "Book a Session"
+  },
+  "hero": {
+    "tagline": "",
+    "cta_primary": "Discover AURA",
+    "cta_secondary": "Become a Founding Member"
+  },
+  "about": {
+    "heading": "What is AURA?",
+    "intro": "AURA is a space for stillness, movement, and connection in Cologne. You don't need to become anything here. You get to remember.",
+    "description": "Yoga, sauna rituals, meditation, and honest conversation in a warm room. For people who are ready to remember who they already are.",
+    "loft": "The Loft is an open space to arrive, linger, and connect. Between sessions, simply be. A space that breathes.",
+    "pillars_heading": "Three Pillars",
+    "pillar_body_title": "Body",
+    "pillar_body_description": "Yoga, movement, sauna rituals, nervous system regulation. Feeling the body, not optimizing it.",
+    "pillar_clarity_title": "Clarity",
+    "pillar_clarity_description": "1:1 Clarity Sessions, meditation, inner perception. Seeing what is - without judgment.",
+    "pillar_community_title": "Community",
+    "pillar_community_description": "The Loft, community experiences, shared meals. Connection that sustains."
+  },
+  "offerings": {
+    "heading": "What awaits you",
+    "yoga": {
+      "title": "Yoga",
+      "description": "Small groups, max 12 people. Classes morning, noon, and evening. Practice that builds stability in the body, not performance on the mat."
+    },
+    "sauna": {
+      "title": "Sauna & Rituals",
+      "description": "Guided rituals combining breathwork, meditation, heat, and cold. A ritual space for nervous system regulation and self-experience."
+    },
+    "clarity": {
+      "title": "Clarity Sessions",
+      "description": "1:1 guidance for transitions, decisions, and inner shifts."
+    },
+    "meditation": {
+      "title": "Meditation",
+      "description": "Silent meditation, guided inner journeys, strengthening intuition. A path back to your own compass."
+    },
+    "community": {
+      "title": "Community Experiences",
+      "description": "Yoga, breathwork, sauna, and shared meals in one experience. Deeper connection beyond single sessions."
+    }
+  },
+  "location": {
+    "heading": "Where to find us",
+    "address": "Uni-Center Cologne",
+    "description": "In the Uni-Center, a residential complex with over 2,000 residents. Concrete, city rhythm, the pulse of life. Right in the middle: a space of stillness."
+  },
+  "forYou": {
+    "heading": "Who is AURA for?",
+    "description": "For anyone who senses there's more. Who isn't looking for the next trend, but for a place to arrive. I have enough. I am enough."
+  },
+  "waitlist": {
+    "heading": "Be part of it from the start",
+    "description": "AURA is opening soon. As a Founding Member, you'll get early access - at a special rate, to a space that's also yours.",
+    "placeholder": "Your email address",
+    "button": "Join the Waitlist"
+  },
+  "footer": {
+    "tagline": "a space to remember",
+    "impressum": "Legal Notice",
+    "datenschutz": "Privacy Policy",
+    "rights": "All rights reserved."
+  },
+  "studio": {
+    "heading": "AURA Studio",
+    "intro": "Yoga, sauna rituals, and nervous system regulation - in a space that holds.",
+    "description": "Small groups. This is about you, not the perfect pose. The practice is honest and accessible.",
+    "loft_heading": "The Loft",
+    "loft_description": "Across three levels: lounge areas, a quiet gallery for journaling and conversation, a small kitchen for tea and water. Between sessions, simply be. The rhythm here happens on its own, not by schedule.",
+    "yogaraum_heading": "Yoga & Ritual Room",
+    "yogaraum_description": "The intimate space for movement and practice. Max 10-12 participants per class. Classes spread through the day: morning, noon, evening.",
+    "sauna_heading": "Sauna & Ritual Experiences",
+    "sauna_description": "Guided rituals combining breathwork, meditation, heat phases, and cold impulses. Followed by integration time in the yoga room and Loft. 8-12 participants.",
+    "sauna_dropin_heading": "Sauna Drop-in",
+    "sauna_dropin_description": "Open sauna access on selected evenings. A low-barrier community format for people from the building and neighborhood. Drop by, arrive, be.",
+    "kursplan": "Schedule coming soon",
+    "kursplanDescription": "We're currently building the timetable. Join the waitlist to be the first to know."
+  },
+  "clarity": {
+    "heading": "Clarity Sessions",
+    "intro": "1:1 guidance for moments when you need clarity.",
+    "description": "A space where you can see what is. For transitions, decisions, inner shifts. For everything that wants to be heard."
+  },
+  "philosophy": {
+    "heading": "Philosophy",
+    "intro": "AURA is a posture.",
+    "description": "We believe most people simply need to remember - what they already know, already feel, already are.",
+    "remember_heading": "A Space to Remember",
+    "remember_text": "To remember what was always there. Your own clarity, your own stillness, your own rhythm. AURA creates the space for that. Through presence.",
+    "pillars_heading": "Three Pillars",
+    "pillar_body_title": "Body",
+    "pillar_body_text": "Yoga, movement, sauna rituals, nervous system regulation. The body as access to what we know before we think.",
+    "pillar_clarity_title": "Clarity",
+    "pillar_clarity_text": "1:1 Clarity Sessions, meditation, inner perception. Seeing what is - without judgment, without guidance. Just clarity.",
+    "pillar_community_title": "Community",
+    "pillar_community_text": "The Loft, community experiences, shared meals, real encounters. Connection that isn't staged, but emerges.",
+    "anticonsumption_heading": "Not a Place of Consumption",
+    "anticonsumption_text": "Many places in our city are tied to consumption. Cafés, bars, restaurants - always with the expectation to buy something. AURA is a space where you can simply be. No obligation to consume, no expectation.",
+    "enough_heading": "I have enough. I am enough.",
+    "enough_text": "Not an affirmation, but an invitation. To stop optimizing yourself. To arrive at what is already here.",
+    "ritualraum_heading": "Urban Ritual Space",
+    "ritualraum_text": "AURA is an urban ritual space. A place designed for nervous system regulation, self-experience, and a more awake life. In Uni-Center Cologne, in the middle of everyday life."
+  },
+  "aboutPage": {
+    "heading": "About AURA",
+    "monika": {
+      "name": "Monika",
+      "role": "Founder & Space Holder",
+      "description": "Monika holds space, physically and energetically. With a background in yoga, meditation, and systemic guidance, she creates places where people are free to remember."
+    }
+  }
+}
