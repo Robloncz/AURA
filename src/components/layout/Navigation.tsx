@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { AuraLogo } from "@/components/ui/AuraLogo";
@@ -9,14 +9,6 @@ export function Navigation() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const links = [
     { href: "/studio", label: t("studio") },
@@ -27,11 +19,7 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full transition-[background-color,backdrop-filter,box-shadow] duration-500 ${
-        scrolled
-          ? "bg-aura-white/80 backdrop-blur-md shadow-[0_1px_0_0_rgba(45,42,38,0.06)]"
-          : ""
-      }`}
+      className="fixed top-0 z-50 w-full nav-fade-bg backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <Link href="/" aria-label="AURA Home">
@@ -55,7 +43,7 @@ export function Navigation() {
           ))}
           <Link
             href="/clarity"
-            className="rounded-full bg-aura-charcoal px-5 py-2 text-sm font-medium text-aura-cream transition-all hover:bg-aura-charcoal/90"
+            className="rounded-full bg-aura-orange px-5 py-2 text-sm font-medium text-white transition-all hover:bg-aura-orange/90"
           >
             {t("book")}
           </Link>
@@ -112,7 +100,7 @@ export function Navigation() {
           <Link
             href="/clarity"
             onClick={() => setMobileOpen(false)}
-            className="mt-4 rounded-full bg-aura-charcoal px-8 py-3 text-base font-medium text-aura-cream transition-all hover:bg-aura-charcoal/90"
+            className="mt-4 rounded-full bg-aura-orange px-8 py-3 text-base font-medium text-white transition-all hover:bg-aura-orange/90"
           >
             {t("book")}
           </Link>

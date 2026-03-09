@@ -3,22 +3,31 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Plus_Jakarta_Sans, Cormorant } from "next/font/google";
+import localFont from "next/font/local";
 import { routing } from "@/i18n/routing";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import "../globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
+const satoshi = localFont({
+  src: [
+    { path: "../../../public/fonts/Satoshi-Bold.woff2" },
+    { path: "../../../public/fonts/Satoshi-Bold.woff" },
+  ],
+  variable: "--font-satoshi",
   display: "swap",
+  weight: "700",
 });
 
-const cormorant = Cormorant({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-cormorant",
+const satoshiItalic = localFont({
+  src: [
+    { path: "../../../public/fonts/Satoshi-Italic.woff2" },
+    { path: "../../../public/fonts/Satoshi-Italic.woff" },
+  ],
+  variable: "--font-satoshi-italic",
   display: "swap",
+  weight: "400",
+  style: "italic",
 });
 
 export const metadata: Metadata = {
@@ -52,7 +61,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${jakarta.variable} ${cormorant.variable}`}>
+    <html lang={locale} className={`${satoshi.variable} ${satoshiItalic.variable}`}>
       <body className="font-sans antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navigation />

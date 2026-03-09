@@ -10,7 +10,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-aura-charcoal/5 bg-aura-white px-6 py-10 sm:py-16">
+    <footer className="border-t border-aura-charcoal/5 bg-aura-light-gray px-6 py-14 sm:py-20">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 sm:gap-8">
         <AuraSlogan height={120} className="sm:h-50 sm:w-auto" />
 

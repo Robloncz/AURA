@@ -11,7 +11,7 @@ export function AuraSlogan({ height = 40, className }: AuraSloganProps) {
 
   return (
     <Image
-      src="/aura-slogan.svg"
+      src="/aura-test.svg"
       alt="a space to remember"
       width={width}
       height={height}
